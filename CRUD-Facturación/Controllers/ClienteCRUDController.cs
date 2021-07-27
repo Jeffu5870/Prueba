@@ -98,24 +98,24 @@ namespace CRUD_Facturación.Controllers
 
         //Método que se utilizará para eliminar datos
         [HttpDelete] //parámetros por url
-        public IActionResult Delete(ClienteRespuesta oModel)
+        public IActionResult Delete(int Nit)
         {
             Respuesta respuesta = new Respuesta();
             try
             {
                 using (Datos_CRUDContext db = new Datos_CRUDContext())
                 {
-                    Cliente oCliente = db.Clientes.Find(oModel.Nit);
-                    db.Remove(oCliente);
-                    db.SaveChanges();
+                    Cliente oCliente = db.Clientes.Find(Nit);
+                    db.Remove(oCliente); //Remove para poder eliminar
+                    db.SaveChanges();// Guardar 
                     respuesta.Verdadero = 1;
                 }
                 
 
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                respuesta.Mensaje = ex.Message;
+                respuesta.Mensaje = e.Message;
             }
             return Ok(respuesta);
         }

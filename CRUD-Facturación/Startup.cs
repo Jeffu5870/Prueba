@@ -34,6 +34,7 @@ namespace CRUD_Facturación
                                         {
                                             builder.WithHeaders("*");
                                             builder.WithOrigins("*");
+                                            builder.WithMethods("*");//Utilizado para que nos permita utilizar nuestro metodos delte y put
                                         }); 
             });
 
